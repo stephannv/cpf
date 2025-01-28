@@ -1,0 +1,14 @@
+name: cpf
+version: 1.0.0
+
+authors:
+  - stephann <3025661+stephannv@users.noreply.github.com>
+
+crystal: ">= 1.15.0"
+
+license: MIT
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: 1.6.4
