@@ -18,6 +18,7 @@ require "./cpf/validator"
 struct CPF
   VERSION = "1.0.0"
 
+  # Raised when an invalid value is provided while initializing a CPF
   class InvalidValueError < ArgumentError
   end
 
@@ -73,5 +74,15 @@ struct CPF
   # ```
   def unformatted : String
     value.gsub(/[^\d]/, "")
+  end
+
+  # Same as `#value`.
+  def to_s : String
+    @value
+  end
+
+  # Appends `#value` to *io*.
+  def to_s(io : IO) : Nil
+    @value.to_s(io)
   end
 end

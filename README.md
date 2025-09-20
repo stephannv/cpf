@@ -32,15 +32,17 @@ require "cpf"
 
 # With valid formatted value
 cpf = CPF.new("640.061.830-97")
-cpf.value # => "640.061.830-97"
-cpf.formatted # => "640.061.830-97"
+cpf.value       # => "640.061.830-97"
+cpf.formatted   # => "640.061.830-97"
 cpf.unformatted # => "64006183097"
+cpf.to_s        # => "640.061.830-97"
 
 # With valid unformatted value
 cpf = CPF.new("64006183097")
-cpf.value # => "64006183097"
-cpf.formatted # => "640.061.830-97"
+cpf.value       # => "64006183097"
+cpf.formatted   # => "640.061.830-97"
 cpf.unformatted # => "64006183097"
+cpf.to_s        # => "64006183097"
 ```
 
 A `CPF` object is designed to never hold an invalid value, so you can assume
