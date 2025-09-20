@@ -15,7 +15,7 @@ require "./cpf/validator"
 # CPF.parse("11111111111")    # => nil
 # CPF.parse("640.061.830-97") # => #<CPF:0x104fe0ae0 @value="640.061.830-97">
 # ```
-class CPF
+struct CPF
   VERSION = "1.0.0"
 
   # Returns the value provived on initialization

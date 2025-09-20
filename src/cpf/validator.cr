@@ -1,4 +1,4 @@
-class CPF
+struct CPF
   # Provides CPF number validation method
   module Validator
     extend self
