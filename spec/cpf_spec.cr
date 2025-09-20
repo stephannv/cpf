@@ -14,8 +14,8 @@ describe CPF do
   describe "#initialize" do
     INVALID_VALUES.each do |value|
       context "with invalid value: #{value}" do
-        it "raises ArgumentError" do
-          expect_raises(ArgumentError, "Invalid CPF format") do
+        it "raises CPF::InvalidValueError" do
+          expect_raises(CPF::InvalidValueError, "Invalid CPF value") do
             CPF.new(value)
           end
         end
@@ -36,7 +36,7 @@ describe CPF do
     INVALID_VALUES.each do |value|
       context "with invalid value: #{value}" do
         it "returns nil" do
-          expect_raises(ArgumentError, "Invalid CPF format") do
+          expect_raises(CPF::InvalidValueError, "Invalid CPF value") do
             cpf = CPF.new(value)
             cpf.should be_nil
           end

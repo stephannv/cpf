@@ -18,6 +18,9 @@ require "./cpf/validator"
 struct CPF
   VERSION = "1.0.0"
 
+  class InvalidValueError < ArgumentError
+  end
+
   # Returns the value provived on initialization
   #
   # ```
@@ -48,7 +51,7 @@ struct CPF
     return unless validate
 
     unless CPF::Validator.valid?(value)
-      raise ArgumentError.new("Invalid CPF format")
+      raise CPF::InvalidValueError.new("Invalid CPF value")
     end
   end
 
