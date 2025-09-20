@@ -1,9 +1,11 @@
 struct CPF
-  # Provides CPF number validation method
+  # Provides CPF identifier validation method
   module Validator
     extend self
 
     private REGEX = %r{^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$}
+
+    private INVALID_CHARS = %r{\D}
 
     private BLOCK_LIST = [
       "11111111111",
@@ -19,7 +21,7 @@ struct CPF
       "12345678909",
     ]
 
-    # Returns `true` if the given value is a valid CPF number, otherwise
+    # Returns `true` if the given value is a valid CPF identifier, otherwise
     # returns false
     #
     # ```
@@ -41,26 +43,20 @@ struct CPF
     end
 
     private def blocked?(value : String) : Bool
-      BLOCK_LIST.includes?(value.gsub(/\D/, ""))
+      BLOCK_LIST.includes?(value.gsub(INVALID_CHARS, ""))
     end
 
     private def valid_digit?(digit : UInt8, numbers : Array(UInt8)) : Bool
-      total = 0
       size = numbers.size
-
-      numbers.each_with_index do |number, index|
-        total += number * ((size + 1) - index)
-      end
+      total = numbers.map_with_index { |number, index| (size + 1 - index) * number }.sum
 
       rest = total % 11
 
       if rest == 0 || rest == 1
-        return false if digit != 0
+        digit == 0
       else
-        return false if digit != (11 - rest)
+        digit == (11 - rest)
       end
-
-      true
     end
   end
 end

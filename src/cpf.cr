@@ -1,6 +1,6 @@
 require "./cpf/validator"
 
-# Represents a CPF (Cadastro de Pessoas Físicas) number.
+# Represents a CPF (Cadastro de Pessoas Físicas) identifier.
 #
 # A `CPF` object is designed to never hold an invalid value, so you can assume
 # that a CPF object will always hold a valid value.
@@ -39,7 +39,7 @@ struct CPF
     new(value, validate: true)
   end
 
-  # Returns a `CPF` if the given String is a valid CPF number, otherwise
+  # Returns a `CPF` if the given String is a valid CPF identifier, otherwise
   # returns `nil`.
   def self.parse(value : String) : CPF?
     return unless CPF::Validator.valid?(value)
@@ -55,7 +55,7 @@ struct CPF
     end
   end
 
-  # Returns the formatted CPF number
+  # Returns the formatted CPF identifier
   #
   # ```
   # cpf = CPF.new("64006183097")
@@ -65,7 +65,7 @@ struct CPF
     value.gsub(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "\\1.\\2.\\3-\\4")
   end
 
-  # Returns the unformatted CPF number
+  # Returns the unformatted CPF identifier
   #
   # ```
   # cpf = CPF.new("640.061.830-97")
