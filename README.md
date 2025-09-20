@@ -1,13 +1,15 @@
 # CPF
 
-CPF number validation and formatting for Crystal.
+CPF identifier validation and formatting for Crystal.
 
-CPF (Cadastro de Pessoa Físical) is the Brazilian individual taxpayer registry.
-It's an 11-digit number in the format 000.000.000-00, where the last 2 numbers
+CPF (Cadastro de Pessoa Física) is the Brazilian individual taxpayer registry.
+It's an 11-digit identifier in the format 000.000.000-00, where the last 2 digits
 are check digits, generated through an arithmetic operation on the first nine
 digits.
 
-[API Reference](https://crystaldoc.info/github/stephannv/cpf)
+## Links
+- [API Reference](https://crystaldoc.info/github/stephannv/cpf)
+- [CNPJ](https://github.com/stephannv/cnpj)
 
 ## Installation
 
@@ -60,7 +62,7 @@ CPF.parse("11111111111") # => nil
 CPF.parse("640.061.830-97") # => #<CPF:0x104fe0ae0 @value="640.061.830-97">
 ```
 
-You can use `CPF::Validator` module to validate a CPF number:
+You can use `CPF::Validator` module to validate a CPF identifier:
 ```crystal
 CPF::Validator.valid?("11111111111") # => false
 
