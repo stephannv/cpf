@@ -3,7 +3,7 @@ struct CPF
   module Validator
     extend self
 
-    private REGEX = %r{^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$}
+    private REGEX = %r{^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$}
 
     private BLOCK_LIST = [
       "11111111111",
