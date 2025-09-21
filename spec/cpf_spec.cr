@@ -11,6 +11,16 @@ describe CPF do
     end
   end
 
+  describe "#to_s" do
+    it "delegates to @value" do
+      cpf = CPF.new("466.828.070-40")
+      cpf.to_s.should eq "466.828.070-40"
+
+      output = String.build { |io| cpf.to_s(io) }
+      output.should eq "466.828.070-40"
+    end
+  end
+
   describe "#initialize" do
     INVALID_VALUES.each do |value|
       context "with invalid value: #{value}" do
